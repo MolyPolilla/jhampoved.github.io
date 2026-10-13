@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mi cuenta — MocciMoth</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="cuenta">
+<header id="top"></header>
+<main class="panel">
+  <span class="tape"></span>
+  <a class="back" href="/"><i data-icon="arrow-left"></i>Tienda</a>
+  <h1><i data-icon="user" class="i-xl"></i> Mi cuenta</h1>
+  <div id="setup" class="notice warn hidden"><i data-icon="key-round"></i><div>Primera ejecución: <a href="/setup.html"><u>crear administrador local</u></a>.</div></div>
+  <div id="me"></div>
+  <form id="f" class="form" novalidate>
+    <label class="field" data-f="email"><span class="lbl"><i data-icon="user" class="i-sm"></i>Email</span><input name="email" type="email" required autocomplete="username"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <label class="field" data-f="password"><span class="lbl"><i data-icon="lock" class="i-sm"></i>Contraseña</span><input name="password" type="password" required autocomplete="current-password"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <button class="btn" type="submit"><i data-icon="log-out"></i>Entrar</button>
+    <p class="muted">¿No tenés cuenta? <a href="/registro.html"><u>Crear cuenta</u></a></p>
+  </form>
+  <form id="mfaForm" class="form hidden" novalidate autocomplete="off">
+    <p class="notice"><i data-icon="shield-check"></i><span>Ingresá el código de 6 dígitos de tu app autenticadora, o un código de recuperación.</span></p>
+    <label class="field" data-f="code"><span class="lbl"><i data-icon="key-round" class="i-sm"></i>Código de verificación</span><input name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="20" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <button class="btn" type="submit"><i data-icon="check"></i>Verificar</button>
+    <button class="btn soft" type="button" id="mfaCancel"><i data-icon="log-out"></i>Cancelar</button>
+  </form>
+  <section id="enroll" class="hidden">
+    <h2><i data-icon="shield-check" class="i-lg"></i>Activá la verificación en dos pasos</h2>
+    <p class="notice warn"><i data-icon="lock"></i><span>Es obligatoria para administradores. Sin este paso la cuenta no tiene acceso al panel.</span></p>
+    <ol>
+      <li>En tu app autenticadora (Google Authenticator, Aegis, 2FAS, Authy…) agregá una cuenta con <b>ingresar clave de configuración</b>.</li>
+      <li>Clave: <code id="enrollSecret"></code></li>
+      <li>Escribí abajo el código de 6 dígitos que muestra la app.</li>
+    </ol>
+    <form id="enrollForm" class="form" novalidate autocomplete="off">
+      <label class="field" data-f="code"><span class="lbl"><i data-icon="key-round" class="i-sm"></i>Código de 6 dígitos</span><input name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+      <button class="btn" type="submit"><i data-icon="check"></i>Activar</button>
+      <button class="btn soft" type="button" id="enrollCancel"><i data-icon="log-out"></i>Cancelar</button>
+    </form>
+    <div id="recoveryBox" class="hidden">
+      <p class="notice warn"><i data-icon="circle-alert"></i><span><b>Guardá estos códigos de recuperación ahora.</b> Cada uno sirve una sola vez si perdés el celular. No se vuelven a mostrar.</span></p>
+      <ul id="recoveryList"></ul>
+      <button class="btn" type="button" id="recoveryDone"><i data-icon="check"></i>Ya los guardé</button>
+    </div>
+  </section>
+  <p id="msg" class="msg" role="status"></p>
+  <div id="ordersBox" class="hidden"><h2><i data-icon="package" class="i-lg"></i>Mis pedidos</h2><div id="orders"></div></div>
+</main>
+<script src="/common.js"></script>
+<script src="/account.js"></script>
+</body>
+</html>

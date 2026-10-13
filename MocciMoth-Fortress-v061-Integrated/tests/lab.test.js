@@ -1,0 +1,27 @@
+"use strict";
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const {startServer,client,seedAdminAndUser,completeMfa,ADMIN,USER} = require('./helpers');
+let srv;
+test.before(async()=>{srv=await startServer();await seedAdminAndUser(srv);});
+test.after(async()=>{await srv.stop();});
+test('Mocci Lab: acceso restringido, proveedor y recepción actualizan stock una sola vez',async()=>{
+ const anon=client(srv.base);
+ assert.equal((await anon.req('GET','/api/lab/overview')).status,401);
+ const user=client(srv.base);await user.login(USER.email,USER.password);
+ assert.equal((await user.req('POST','/api/lab/suppliers',{name:'Proveedor prueba'})).status,403);
+ const admin=client(srv.base);assert.equal((await admin.login(ADMIN.email,ADMIN.password)).status,200);
+ assert.equal((await admin.req('GET','/api/lab/overview')).status,401,'sin MFA el admin no entra a Lab');
+ await completeMfa(admin,srv);
+ const products=(await admin.req('GET','/api/products')).data;
+ const id=products[0].id,old=products[0].stock;
+ const sup=await admin.req('POST','/api/lab/suppliers',{name:'Proveedor de prueba',contact:'contacto ficticio'});
+ assert.equal(sup.status,201);
+ const body={product_id:id,supplier_id:sup.data.id,quantity:5,reference:'TEST-REC-0001'};
+ assert.equal((await admin.req('POST','/api/lab/receipts',body)).status,201);
+ assert.equal((await admin.req('POST','/api/lab/receipts',body)).status,409);
+ assert.equal((await admin.req('GET','/api/products')).data.find(p=>p.id===id).stock,old+5);
+ assert.equal((await admin.req('GET','/api/lab/receipts')).data.length,1);
+ assert.equal((await admin.req('GET','/api/lab/overview')).data.suppliers,1);
+ assert.equal((await anon.req('GET','/api/lab/receipts')).status,401);
+});

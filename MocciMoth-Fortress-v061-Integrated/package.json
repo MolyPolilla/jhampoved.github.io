@@ -1,0 +1,13 @@
+{
+  "name": "moccimoth",
+  "version": "0.6.0-lab",
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "reset-admin": "node scripts/reset-admin-password.js"
+  }
+}

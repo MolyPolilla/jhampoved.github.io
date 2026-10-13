@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel admin — MocciMoth</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header id="top"></header>
+<main class="panel wide">
+  <span class="tape lav"></span>
+  <a class="back" href="/cuenta.html"><i data-icon="arrow-left"></i>Mi cuenta</a>
+  <h1><i data-icon="layout-dashboard" class="i-xl"></i> Panel Admin <img class="gif sm" src="/assets/gifs/mariposa.gif" alt=""></h1>
+  <div id="guard" class="notice"><i data-icon="loader" class="spin"></i>Comprobando permisos…</div>
+
+  <div id="admin" class="hidden">
+    <p><a class="btn soft" href="/lab.html">Abrir Mocci Lab · Inventario y proveedores →</a></p>
+    <div class="tabs" role="tablist">
+      <button class="chip" role="tab" type="button" data-tab="productos" aria-pressed="true"><i data-icon="package" class="i-sm"></i>Productos</button>
+      <button class="chip" role="tab" type="button" data-tab="pedidos" aria-pressed="false"><i data-icon="receipt" class="i-sm"></i>Pedidos</button>
+      <button class="chip" role="tab" type="button" data-tab="seguridad" aria-pressed="false"><i data-icon="key-round" class="i-sm"></i>Seguridad</button>
+    </div>
+
+    <!-- PRODUCTOS -->
+    <section id="tab-productos">
+      <h2 id="formTitle"><i data-icon="plus" class="i-lg"></i>Nuevo producto</h2>
+      <form id="f" class="form" novalidate>
+        <input type="hidden" name="id">
+        <div class="form-2">
+          <label class="field" data-f="nombre"><span class="lbl">Nombre</span><input name="nombre" maxlength="80" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+          <label class="field" data-f="categoria"><span class="lbl"><i data-icon="tag" class="i-sm"></i>Categoría</span>
+            <select name="categoria"><option>Personajes</option><option>Semi realistas</option><option>Peluches</option><option>Especiales</option></select><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        </div>
+        <label class="field" data-f="descripcion"><span class="lbl">Descripción</span><textarea name="descripcion" maxlength="300" required></textarea><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        <div class="form-2">
+          <label class="field" data-f="precio"><span class="lbl">Precio (ARS)</span><input name="precio" type="number" min="0" step="1" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+          <label class="field" data-f="stock"><span class="lbl"><i data-icon="package" class="i-sm"></i>Stock</span><input name="stock" type="number" min="0" step="1" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        </div>
+        <div class="form-2">
+          <label class="field" data-f="imagen"><span class="lbl">Ruta de imagen</span><input name="imagen" placeholder="/assets/productos/…"><span class="hint">Opcional si subís un archivo.</span><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+          <label class="field"><span class="lbl"><i data-icon="upload" class="i-sm"></i>O subir imagen nueva (máx. 4 MB)</span><input id="file" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><span class="hint">PNG, JPG, WEBP o GIF.</span></label>
+        </div>
+        <div class="actions">
+          <button id="save" class="btn" type="submit"><i data-icon="check"></i>Publicar</button>
+          <button id="cancel" type="button" class="btn soft hidden"><i data-icon="x"></i>Cancelar edición</button>
+        </div>
+        <p id="msg" class="msg" role="status"></p>
+      </form>
+      <h2><i data-icon="layout-grid" class="i-lg"></i>Catálogo</h2>
+      <div id="list"></div>
+    </section>
+
+    <!-- PEDIDOS -->
+    <section id="tab-pedidos" class="hidden">
+      <h2><i data-icon="receipt" class="i-lg"></i>Últimos pedidos simulados</h2>
+      <div class="tblwrap" id="orders"></div>
+    </section>
+
+    <!-- SEGURIDAD -->
+    <section id="tab-seguridad" class="hidden">
+      <h2><i data-icon="key-round" class="i-lg"></i>Cambiar contraseña del administrador</h2>
+      <p class="muted">Se verifica tu contraseña actual. Al cambiarla se cierran las demás sesiones abiertas.</p>
+      <form id="pf" class="form" style="max-width:460px" novalidate autocomplete="off">
+        <label class="field" data-f="actual"><span class="lbl"><i data-icon="lock" class="i-sm"></i>Contraseña actual</span><input name="actual" type="password" autocomplete="current-password" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        <label class="field" data-f="nueva"><span class="lbl"><i data-icon="key-round" class="i-sm"></i>Contraseña nueva</span><input name="nueva" type="password" autocomplete="new-password" minlength="10" required><span class="hint">Mínimo 10 caracteres, con letras y números.</span><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        <label class="field" data-f="confirmar"><span class="lbl">Repetir contraseña nueva</span><input name="confirmar" type="password" autocomplete="new-password" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+        <button id="psave" class="btn" type="submit"><i data-icon="shield-check"></i>Cambiar contraseña</button>
+        <p id="pmsg" class="msg" role="status"></p>
+      </form>
+    </section>
+  </div>
+</main>
+<script src="/common.js"></script>
+<script src="/admin.js"></script>
+</body>
+</html>

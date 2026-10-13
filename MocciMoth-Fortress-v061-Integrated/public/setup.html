@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crear administrador — MocciMoth</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="setup">
+<header id="top"></header>
+<main class="panel">
+  <span class="tape lav"></span>
+  <h1><i data-icon="key-round" class="i-xl"></i> Crear administrador</h1>
+  <p class="notice"><i data-icon="shield-check"></i><span>Solo aparece en la primera configuración. La contraseña se guarda <b>hasheada</b> en SQLite, nunca dentro de <code>server.js</code>.</span></p>
+  <form id="f" class="form" novalidate autocomplete="off">
+    <label class="field" data-f="nombre"><span class="lbl"><i data-icon="user" class="i-sm"></i>Nombre</span><input name="nombre" required maxlength="60"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <label class="field" data-f="email"><span class="lbl">Email ficticio</span><input name="email" type="email" required placeholder="admin@moccimoth.local"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <label class="field" data-f="password"><span class="lbl"><i data-icon="lock" class="i-sm"></i>Contraseña del laboratorio</span><input name="password" type="password" minlength="8" required autocomplete="new-password"><span class="hint">Mínimo 8 caracteres.</span><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <label class="field hidden" id="setupTokenField" data-f="setupToken"><span class="lbl"><i data-icon="key-round" class="i-sm"></i>Token de instalación</span><input name="setupToken" type="password" autocomplete="off"><span class="hint">Requerido cuando el servidor está detrás de un proxy.</span><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <button class="btn" type="submit"><i data-icon="check"></i>Crear administrador</button>
+  </form>
+  <p id="msg" class="msg" role="status"></p>
+</main>
+<script src="/common.js"></script>
+<script src="/account.js"></script>
+</body>
+</html>

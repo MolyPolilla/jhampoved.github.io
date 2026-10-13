@@ -1,0 +1,9 @@
+moccimoth.db
+*.db
+*.db-*
+*.db.*
+certs/
+.env
+.env.*
+*.pem
+*.mfa.key

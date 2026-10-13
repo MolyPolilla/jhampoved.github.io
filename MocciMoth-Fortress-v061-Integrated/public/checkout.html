@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finalizar pedido — MocciMoth</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header id="top"></header>
+<main class="co">
+  <div class="co-head no-print">
+    <h1><i data-icon="shield-check" class="i-xl"></i>Checkout <img class="gif sm" src="/assets/gifs/brillo.gif" alt=""></h1>
+    <a class="back" href="/"><i data-icon="arrow-left"></i>Seguir comprando</a>
+  </div>
+  <div class="notice warn no-print" style="margin-bottom:18px"><i data-icon="lock"></i><div><b>Pago de demostración.</b> No uses una tarjeta real: el servidor solo acepta números de prueba y nunca guarda el número completo ni el CVV.</div></div>
+  <ol class="steps" id="steps" aria-label="Pasos del checkout"></ol>
+  <div class="co-grid">
+    <section class="co-card" id="stage" aria-live="polite"></section>
+    <aside class="co-card summary" id="side" aria-label="Resumen de compra"></aside>
+  </div>
+</main>
+<script src="/common.js"></script>
+<script src="/checkout.js"></script>
+</body>
+</html>

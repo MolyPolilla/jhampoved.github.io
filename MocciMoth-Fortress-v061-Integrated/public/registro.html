@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crear cuenta — MocciMoth</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="registro">
+<header id="top"></header>
+<main class="panel">
+  <span class="tape lav"></span>
+  <a class="back" href="/cuenta.html"><i data-icon="arrow-left"></i>Cuenta</a>
+  <h1><i data-icon="sparkles" class="i-xl"></i> Crear cuenta</h1>
+  <p class="notice"><i data-icon="info"></i><span>Usá datos <b>ficticios</b>. Esto es un laboratorio.</span></p>
+  <form id="f" class="form" novalidate autocomplete="off">
+    <div class="form-2"><label class="field" data-f="nombre"><span class="lbl"><i data-icon="user" class="i-sm"></i>Nombre</span><input name="nombre" required maxlength="60"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label><label class="field" data-f="email"><span class="lbl">Email ficticio</span><input name="email" type="email" required><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label></div>
+    <label class="field" data-f="password"><span class="lbl"><i data-icon="lock" class="i-sm"></i>Contraseña</span><input name="password" type="password" minlength="8" required autocomplete="new-password"><span class="hint">Mínimo 8 caracteres.</span><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <div class="form-2"><label class="field" data-f="telefono"><span class="lbl">Teléfono</span><input name="telefono" type="tel" maxlength="20"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label><label class="field" data-f="fecha_nacimiento"><span class="lbl">Fecha</span><input name="fecha_nacimiento" type="date"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label></div>
+    <label class="field" data-f="direccion"><span class="lbl"><i data-icon="map-pin" class="i-sm"></i>Dirección</span><input name="direccion" maxlength="100"><span class="ferr"><i data-icon="circle-alert" class="i-sm"></i><em></em></span></label>
+    <button class="btn" type="submit"><i data-icon="check"></i>Crear cuenta</button>
+  </form>
+  <p id="msg" class="msg" role="status"></p>
+</main>
+<script src="/common.js"></script>
+<script src="/account.js"></script>
+</body>
+</html>
